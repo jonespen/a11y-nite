@@ -1,0 +1,59 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Space out content a bit */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.hl {
+    background: #e9dbef;
+}
+
+/* 3. Progressive collapsibles */
+
+.collapsible {
+}
+
+h3 [aria-expanded] {
+    display: block;
+    width: 100%;
+    font-size: inherit;
+    font-family: inherit;
+    text-transform: inherit;
+    text-align: inherit;
+    margin: 0;
+}
+
+h3 [aria-expanded]:before {
+    content: '\25ba\0020';
+}
+
+h3 [aria-expanded="true"]:before {
+    content: '\25bc\0020';
+}
+
+.collapsible h3 + [aria-hidden] {
+    display: none;
+}
+
+.collapsible h3 + [aria-hidden="false"] {
+    display: block;
+}
+
+.icon-star:before { content: "★ "; }
