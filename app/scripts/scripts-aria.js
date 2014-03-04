@@ -14,6 +14,15 @@
     });
   });
 
+    $('.number').on('click', function() {
+    var button = $(this);
+    $('#number-no-aria').val(function(i, oldval) {
+      return button.is('[title*="add"]') ? 
+        parseInt(oldval, 10) + 10 : 
+        parseInt(oldval, 10) - 10;
+    });
+  });
+
 
   // Modal Extension
   // ===============================
@@ -28,15 +37,27 @@
 
   // Forms
   // ===============================
-  var $form = $('#signup');
+  var $form = $('form.signup');
 
   $form.submit(function() {
-    var errors = $form.find('.errors').html('');
-    if ($('#name').val() === '') {
-      errors.append('<p>Please enter your first name.</p>');
+    console.log($(this));
+    var errors = $(this).find('.alert-danger').html('');
+    var success = $(this).find('.alert-success').html('');
+    errors.attr('role', 'alert');
+    success.attr('role', 'alert');
+    errors.hide();
+    success.hide();
+    if ($(this).find('.name').val() === '') {
+      errors.append('<p role="alert">Please enter your first name.</p>');
+      errors.show();
     }
-    if ($('#email').val() === '') {
-      errors.append('<p>Please enter your email address.</p>');
+    if ($(this).find('.email').val() === '') {
+      errors.append('<p role="alert">Please enter your email address.</p>');
+      errors.show();
+    }
+    if($(this).find('.email').val() !== '' && $(this).find('.name').val() !== ''){
+      success.append('<p role="alert">Form submitted</p>');
+      success.show();
     }
     return false;
   });

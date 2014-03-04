@@ -10,11 +10,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-        <!-- build:css({.tmp,app}) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-</head>
+    <script src="bower_components/platform/platform.js"></script>
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <link rel="import" href="elements/making-waves.html">
+  </head>
   <body class="container">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -26,142 +27,330 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-
+    <nav role="navigation" class="row">
+      <h2 id="nav-header">Navigasjon</h2>
+      <ul aria-labelledby="nav-header">
+        <li><a href="#">Fake</a></li>
+        <li><a href="#">Nav</a></li>
+      </ul>
+    </nav>
+    <main role="main">
+      <div class="row">
+        <h1>Aria examples</h1>
+      </div>
 
       <div class="row">
-        <h2>Images</h2>
-        <img src="images/43uibru34ib3iu4bti3ub.jpg" />
+        <h2>Landmarks</h2>
+        <ul>
+          <li><strong>banner</strong>, complementary, <strong>contentinfo</strong>, form, <strong>main</strong>, navigation, search, <em>application</em></li>
+          <li>Provide "Skip to" links for keyboard users. <a href="https://www.yammer.com/makingwaves.no/#/Threads/index?type=my_all">Yammer, good example</a>. <a href="http://www.oslo.kommune.no/#contents">Oslo Kommune, not so good example</a></li>
+          <li><a href="https://github.com/davidtodd/landmarks">Landmarks firefox plugin</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <h2>Semantic text</h2>
+        <p>This <i>is</i> <b>important</b></p>
+        <pre>&lt;p&gt;This &lt;i&gt;is&lt;/i&gt; &lt;b&gt;important&lt;/b&gt;&lt;/p&gt;</pre>
+        <p>This <em>is</em> <strong>important</strong></p>
+        <pre>&lt;p&gt;This &lt;em&gt;is&lt;/em&gt; &lt;strong&gt;important&lt;/strong&gt;&lt;/p&gt;</pre>
+      </div>
+      <div class="row">
+        <h2>Alternative text</h2>
+
+        <img src="images/43uibru34ib3iu4bti3ub.jpg" width="400" />
+        <pre>&lt;img src=&quot;images/43uibru34ib3iu4bti3ub.jpg&quot; /&gt;</pre>
+
+        <img src="images/43uibru34ib3iu4bti3ub.jpg" width="400" alt="Pie chart of countries: UK: 24%, US: 20%, France: 16%, Germany: 32%, Australia: 8%" />
+        <pre>&lt;img src=&quot;images/43uibru34ib3iu4bti3ub.jpg&quot; <span class="hl">alt=&quot;Pie chart of countries: UK: 24%, US: 20%, France: 16%, Germany: 32%, Australia: 8%&quot;</span> /&gt;</pre>
       </div>
 
+      <div class="row">
+        <h2>Link texts</h2>
+        <p>Used for navigation</p>
+        <p><a href="lenketekst.html">Link text example</a></p>
+      </div>
 
-<div class="row">
-  <h2>Form</h2>
+      <div class="row">
+        <h2>Presentation and group role</h2>
+        
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#pres-role-bad" data-toggle="tab">Bad</a></li>
+          <li><a href="#pres-role-good" data-toggle="tab">Better</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="pres-role-bad">
+            <div>
+              <h3>Donald Duck</h3>
+              <img src="images/Donald_Duck.gif" width="100" />
+              <p>Donald Fauntleroy Duck or Donald Duck is a funny animal cartoon character created in 1934 at Walt Disney Productions.</p>
+            </div>
+          </div>
+          <div class="tab-pane" id="pres-role-good">
+            
+            <div aria-labelledby="pres-header" role="group">
+              <h3 id="pres-header">Donald Duck</h3>
+              <img src="images/Donald_Duck.gif" role="presentation" alt="" width="100" />
+              <p>Donald Fauntleroy Duck or Donald Duck is a funny animal cartoon character created in 1934 at Walt Disney Productions.</p>
+            </div>
 
-  <form role="form">
-    <div class="form-group">
-      <label>Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label>File input</label>
-      <input type="file" id="exampleInputFile">
-      <p class="help-block">Example block-level help text here.</p>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Check me out
-      </label>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
+            <pre>&lt;div <span class="hl">aria-labelledby=&quot;pres-header&quot;</span>&gt;<br/>  &lt;h3 id=&quot;pres-header&quot;&gt;Donald Duck&lt;/h3&gt;<br/>  &lt;img src=&quot;images/Donald_Duck.gif&quot; <span class="hl">role=&quot;presentation&quot; alt=&quot;&quot;</span> width=&quot;100&quot; /&gt;<br/>  &lt;p&gt;Donald bor i Andeby, og er gift eller broren til Dolly&lt;/p&gt;<br/>&lt;/div&gt;</pre>
 
-<div class="row">
-  <h2>Modal window</h2>
-  <!-- Button trigger modal -->
-  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-  </button>
-
-
-  <p>Notes: Focus is restored to button after click. </p>
-
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            <p><strong>Note:</strong> When an element has <code>aria-labelledby</code>, it automatically becomes a group.</p>
+          </div>
         </div>
-        <div class="modal-body">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, accusantium cumque dolorum iure aperiam nisi aliquid sequi. Quae, architecto, harum, aliquid sint enim ea quaerat ducimus veritatis consectetur sequi voluptas?</p>
+
+
+      </div>
+
+      <div class="row">
+        <h2>Labels</h2>
+
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#labels-bad" data-toggle="tab">Bad</a></li>
+          <li><a href="#labels-good" data-toggle="tab">Better</a></li>
+        </ul>
+        
+        <div class="tab-content">
+          <div class="tab-pane active" id="labels-bad">
+            <h3 class="visuallyhidden">Cars</h3>
+            <ul>
+              <li>BMW</li>
+              <li>Skoda</li>
+              <li>Saab</li>
+            </ul>
+            <pre>&lt;h3 class=&quot;visuallyhidden&quot;&gt;Cars&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;BMW&lt;/li&gt;
+  &lt;li&gt;Skoda&lt;/li&gt;
+  &lt;li&gt;Saab&lt;/li&gt;
+&lt;/ul&gt;</pre>
+          </div>
+          <div class="tab-pane" id="labels-good">
+            <h3 id="cars-header" class="visuallyhidden">Cars</h3>
+            <ul aria-labelledby="cars-header">
+              <li>BMW</li>
+              <li>Skoda</li>
+              <li>Saab</li>
+            </ul>
+            <pre>&lt;h3 id=&quot;cars-header&quot; class=&quot;visuallyhidden&quot;&gt;Cars&lt;/h3&gt;<br/>&lt;ul <span class="hl">aria-labelledby=&quot;cars-header&quot;</span>&gt;<br/>  &lt;li&gt;BMW&lt;/li&gt;<br/>  &lt;li&gt;Skoda&lt;/li&gt;<br/>  &lt;li&gt;Saab&lt;/li&gt;<br/>&lt;/ul&gt;</pre>
+            <p>Example: used for navigation lists</p>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+      </div>
+
+      <div class="row" id="font-icon">
+        <h2>Font icons</h2>
+
+        <p><span class="icon-star">Favorite</span></p>
+        <pre>&lt;p&gt;&lt;span class=&quot;icon-star&quot;&gt;Favorite&lt;/span&gt;&lt;/p&gt;</pre>
+        <p><span class="icon-star" aria-hidden="true"></span>Favorite</span></p>
+        <pre>&lt;span class=&quot;icon-star&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;Favorite&lt;/span&gt;</pre>
+
+<!--         <pre>
+&lt;span class=&quot;icon-star&quot; <span class="hl">aria-hidden=&quot;true&quot;</span>&gt;&lt;/span&gt;Favorite&lt;/span&gt;</pre> -->
+        
+        <p>Note on <code>aria-hidden</code> vs <code>role="presentation"</code>: Focusable elements with presentation role is still revealed as a normal HTML element. <code>aria-hidden</code> should hide the element completely.</p>
+
+        <button role="presentation">Presentation button</button>
+        <button aria-hidden="true">Aria hidden button</button>
+
+  
+      </div>
+
+      <div id="form" class="row">
+        <h2>Form</h2>
+
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#form-bad" data-toggle="tab">Bad</a></li>
+          <li><a href="#form-good" data-toggle="tab">Better</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active" id="form-bad">
+
+            <form class="signup" name="signup" action="" novalidate>
+              <div class="alert alert-danger" style="display: none;"></div>
+
+                <!-- NAME -->
+                <div class="form-group">
+                    <label>Name</label>
+                    <input id="name" type="text" name="name" class="name form-control" required>
+                    <p class="help-block" id="nameRequiredText">Please enter your full name.</p>
+                </div>
+                
+                <!-- EMAIL -->
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="email" type="email" name="email" class="email form-control" ng-model="user.email">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+                  
+            </form>
+          </div>
+          <div class="tab-pane" id="form-good">
+            <form name="signup2" class="signup" action="" novalidate>
+              <div class="alert alert-danger" style="display: none;" role="alert" aria-atomic="true"></div>
+              <div class="alert alert-success" style="display: none;" role="alert" aria-atomic="true"></div>
+
+                <!-- NAME -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" name="name" class="name form-control" aria-describedby="nameRequiredText" required>
+                    <p class="help-block" id="nameRequiredText">Please enter your full name.</p>
+                </div>
+                
+                <!-- EMAIL -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" class="email form-control" ng-model="user.email">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+                  
+            </form>
+            <pre>&lt;div class=&quot;alert alert-danger&quot; <span class="hl">role=&quot;alert&quot; aria-atomic=&quot;true&quot;</span>&gt;&lt;/div&gt;</pre>
+            <p><strong>Note:</strong> Element have to be present on load to work properly. </p>
+            <p><a href="http://pauljadam.com/demos/aria-alert-validation.html">Working example</a></p>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <h2>Modal window</h2>
+
+        <p><a href="modal-bad.html">Modal bad example</a></p>
+        <!-- Button trigger modal -->
+        <p>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Launch demo modal
+        </button>
+        </p>
+
+        <p>Notes: Focus is restored to button after click. </p>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" tabindex="-1">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, accusantium cumque dolorum iure aperiam nisi aliquid sequi. Quae, architecto, harum, aliquid sint enim ea quaerat ducimus veritatis consectetur sequi voluptas?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-
-  <div class="row" id="font-icon">
-    <h2>Font icons</h2>
-    <span class="icon-star">Favorite</span>
-  </div>
+      <div class="row" id="button-controlled-input">
+        <h2>Button controller input</h2>
+        <form action="">
+          <fieldset>
+            <legend>Add or subtract ten</legend>
+            <div>
+              <label for="number-no-aria">Current value</label>
+              <input type="text" readonly value="0" id="number-no-aria" />
+              <button type="button" class="number" title="add 10">Add</button>
+              <button type="button" class="number" title="subtract 10">Subtract</button>
+            </div>
+          </fieldset>
+        </form>
+        <form action="">
+          <fieldset>
+            <legend>Add or subtract ten</legend>
+            <div>
+              <label for="number">Current value</label>
+              <input type="text" role="alert" aria-live="assertive" readonly value="0" id="number" />
+              <button type="button" title="add 10" aria-controls="number">Add</button>
+              <button type="button" title="subtract 10" aria-controls="number">Subtract</button>
+            </div>
+          </fieldset>
+        </form>
+        <pre>&lt;label for=&quot;number&quot;&gt;Current value&lt;/label&gt;
+&lt;input type=&quot;text&quot; <span class="hl">role=&quot;alert&quot; aria-live=&quot;assertive&quot;</span> readonly value=&quot;0&quot; id=&quot;number&quot; /&gt;
+&lt;button type=&quot;button&quot; title=&quot;add 10&quot; <span class="hl">aria-controls=&quot;number&quot;</span>&gt;Add&lt;/button&gt;
+&lt;button type=&quot;button&quot; title=&quot;subtract 10&quot; <span class="hl">aria-controls=&quot;number&quot;</span>&gt;Subtract&lt;/button&gt;</pre>
+      </div>
 
       <div class="row">
         <h2>Collapsible panels</h2>
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                  Collapsible Group Item #1
-                </a>
-              </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-              <div class="panel-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                  Collapsible Group Item #2
-                </a>
-              </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-              <div class="panel-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                  Collapsible Group Item #3
-                </a>
-              </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-              <div class="panel-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
+        <p><a href="collapsible-bad.html">Collapsible bad example</a></p>
+        
+        <div class="collapsible">
+          <h3>What is this all about?</h3>
+          <p>Lorem ipsum with a <a href="http://example.com">link thrown in</a> etc.</p>
+          <p>etc.</p>
+          <h3>Collapse something else</h3>
+          <p>Lorem ipsum with a <a href="http://example.com">link thrown in</a> etc.</p>
+          <p>etc.</p>
         </div>
+
+        <p>Notes: Match elements in css using HTML attributes, eg. <code>h3 [aria-expanded]:before</code></p>
+
       </div>
 
-</div>
+      <div class="row">
+        <h2>Mega menus</h2>
+        <p><a href="http://flust.no">Flust.no</a> vs <a href="http://adobe-accessibility.github.io/Accessible-Mega-Menu/">Adobe accessible mega menu</a></p>
 
-    <script src="bower_components/jquery/jquery.js"></script>
+        <h3>Simplified example</h3>
 
-    <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/sass-bootstrap/js/affix.js"></script>
-    <script src="bower_components/sass-bootstrap/js/alert.js"></script>
-    <script src="bower_components/sass-bootstrap/js/button.js"></script>
-    <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
-    <script src="bower_components/sass-bootstrap/js/transition.js"></script>
-    <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
-    <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
-    <script src="bower_components/sass-bootstrap/js/modal.js"></script>
-    <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
-    <script src="bower_components/sass-bootstrap/js/tab.js"></script>
-    <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
-    <script src="bower_components/sass-bootstrap/js/popover.js"></script>
-    <!-- endbuild -->
-</body>
+<!-- 
+<ol>
+  <li>
+    <h4><a href="" id="menu-item-1-header" aria-haspopup="true" aria-owns="menu-item-1-content" aria-expanded="false">Menu item 1</a></h4>
+    <div id="menu-item-1-content" role="group" aria-expanded="false" aria-hidden="true" aria-labelledby="menu-item-1-header">
+      <p>Megamenu content</p>
+    </div>
+  </li>
+</ol> 
+-->
+
+        <pre>
+&lt;ol&gt;<br/>  &lt;li&gt;<br/>    &lt;h4&gt;&lt;a href=&quot;&quot; id=&quot;menu-item-1-header&quot; <span class="hl">aria-haspopup=&quot;true&quot; aria-owns=&quot;menu-item-1-content&quot; aria-expanded=&quot;false&quot;</span>&gt;Menu item 1&lt;/a&gt;&lt;/h4&gt;<br/>    &lt;div id=&quot;menu-item-1-content&quot; <span class="hl">role=&quot;group&quot; aria-expanded=&quot;false&quot; aria-hidden=&quot;true&quot; aria-labelledby=&quot;menu-item-1-header&quot;</span>&gt;<br/>      &lt;p&gt;Megamenu content&lt;/p&gt;<br/>    &lt;/div&gt;<br/>  &lt;/li&gt;<br/>&lt;/ol&gt; 
+</pre>
+        <p><strong>Note</strong>: <code>aria-expanded</code> and <code>aria-hidden</code> have to be changed using javascript when toggling the menu. Also, keyboard navigation should be handled.</p>
+      </div>
+
+      <div class="row">
+        <h2>Bonus: Web components</h2>
+
+        <making-waves title="uu rocks!!"></making-waves>
+      </div>
+
+    </main>
+
+    <div class="row">
+      <footer role="contentinfo">Making Waves made this in 2014. Steal it!</footer>
+    </div>
+
+  <script src="bower_components/jquery/jquery.js"></script>
+
+  <!-- build:js scripts/plugins.js -->
+  <script src="bower_components/sass-bootstrap/js/affix.js"></script>
+  <script src="bower_components/sass-bootstrap/js/alert.js"></script>
+  <script src="bower_components/sass-bootstrap/js/button.js"></script>
+  <script src="bower_components/sass-bootstrap/js/carousel.js"></script>
+  <script src="bower_components/sass-bootstrap/js/transition.js"></script>
+  <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+  <script src="bower_components/sass-bootstrap/js/dropdown.js"></script>
+  <script src="bower_components/sass-bootstrap/js/modal.js"></script>
+  <script src="bower_components/sass-bootstrap/js/scrollspy.js"></script>
+  <script src="bower_components/sass-bootstrap/js/tab.js"></script>
+  <script src="bower_components/sass-bootstrap/js/tooltip.js"></script>
+  <script src="bower_components/sass-bootstrap/js/popover.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/scripts-aria.js"></script>
+  <!-- endbuild -->
+  </body>
 </html>
